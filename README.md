@@ -27,18 +27,18 @@ Best of luck
 
 ## Dev Notes
 
-*the first thing i do is read a documentation of github graphql to understand how i need to interact whit the api, 
+* the first thing i do is read a documentation of github graphql to understand how i need to interact whit the api, 
 then i view the overview explorer to make sense, how create the query [explorer]https://docs.github.com/en/graphql/overview/explorer
 after that y create the app whit the command "npx create-react-app github-topic-explorer" and install 
 react-bootstrap and dotenv the first to use the bootstrap framework , and the second to read .env files.
 in index.js add "import 'bootstrap/dist/css/bootstrap.min.css';" and "require('dotenv').config()"
 this to get the framework and the dotenv in all the app
 
-then create the component folder and add topic.js which is our component to show the topics and interact whit the api.
+* then create the component folder and add topic.js which is our component to show the topics and interact whit the api.
 
-in topic.js
+* in topic.js
 
-create two const to create an array from the response of graphql and the title of the page (or component);
+* create two const to create an array from the response of graphql and the title of the page (or component);
 use "useEffect" for the first call to the function that retreive information about the topic 'react'
 have a function called 'ObtainTopics' which is the main function what interact whit github graphql api,
 in 'ObtainTopics' receives a variable which is the topic to search,
@@ -47,30 +47,29 @@ inside have a function async 'fetchData' which call the url 'https://api.github.
 previously created and wait for the reponse, when the response arrive, call setTopics and setTitle to upgrade the array 
 of topics and the title
 
-this component render a container which have the title of the search and iterate the array of results in topics to view the 
+* this component render a container which have the title of the search and iterate the array of results in topics to view the 
 related topics and stargazer of that topic have a button to view related topics of that topic.
 
-in app.js only create a call to the component Topics.
+* in app.js only create a call to the component Topics.
 
 ### How to run app & test
 
-*First you need to clone
+* First you need to clone
 git clone https://github.com/uplinkmx/github-topic-explorer.git
 
-*Get in into directory 
+* Get in into directory 
 cd github-topic-explorer
 
-*Install dependencies
+* Install dependencies
 npm install
 
-*create empty .env file whit this constants and add your [Github API key](https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql) 
-REACT_APP_GITHUB_API_TOKEN= 'your_api_key'
-REACT_APP_TOPIC='react'
+* Create empty .env file whit this constants and add your [Github API key](https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)  
+* REACT_APP_GITHUB_API_TOKEN= 'your_api_key'
+* REACT_APP_TOPIC='react'
 
-*Start project
-npm start
+* Start project whit 'npm start'
 
-*if you need change the first topic to search you need to modify REACT_APP_TOPIC in your .env file please remember if you change 
+* if you need change the first topic to search you need to modify REACT_APP_TOPIC in your .env file please remember if you change 
 some information of your .env file please restart the project to load this changes.
 
 ### Future Improvements
