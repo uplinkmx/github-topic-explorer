@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# GitHub Topic Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Assignment:
 
-## Available Scripts
+Your task is to build a React web application that displays all the "[topics](https://docs.github.com/en/free-pro-team@latest/graphql/reference/objects#topic)" related to the term "react", using the GitHub GraphQL API.
 
-In the project directory, you can run:
+The application should display how many "[stargazers](https://docs.github.com/en/free-pro-team@latest/graphql/reference/objects#stargazerconnection)" each topic has. A click on a topic should display the topics related to that topic, and how many stargazers they have. And so forth.
 
-### `yarn start`
+To interact with the Github GraphQL API you'll need to have
+  * a [Github API key](https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)
+  * You'll want to make use of the key in the .env file within your application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You may use whatever React framework or library you find useful. URL routing is optional.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Evaluation:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* We will pay particular attention to the way the code is organized, and to the overall readability
+* Unit tests will be greatly appreciated
+* Design will be ignored, however usability and accessibility will be taken into consideration
+* Remember to update this README with instructions on how to install, run and test your application
+* Your first goal is to have a working app, but feel free to improve the application however you see fit
+* We hope that you can complete the assignment within 2 hours but don't set any time constraints
+* Please reach out per email or by opening an issue if anything is unclear or blocking you
 
-### `yarn build`
+Best of luck
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dev Notes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*the first thing i do is read a documentation of github graphql to understand how i need to interact whit the api, 
+then i view the overview explorer to make sense, how create the query [explorer]https://docs.github.com/en/graphql/overview/explorer
+after that y create the app whit the command "npx create-react-app github-topic-explorer" and install 
+react-bootstrap and dotenv the first to use the bootstrap framework , and the second to read .env files.
+in index.js add "import 'bootstrap/dist/css/bootstrap.min.css';" and "require('dotenv').config()"
+this to get the framework and the dotenv in all the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+then create the component folder and add topic.js which is our component to show the topics and interact whit the api.
 
-### `yarn eject`
+in topic.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+create two const to create an array from the response of graphql and the title of the page (or component);
+use "useEffect" for the first call to the function that retreive information about the topic 'react'
+have a function called 'ObtainTopics' which is the main function what interact whit github graphql api,
+in 'ObtainTopics' receives a variable which is the topic to search,
+create options with the headers and query to send that to the api
+inside have a function async 'fetchData' which call the url 'https://api.github.com/graphql' whit the header options
+previously created and wait for the reponse, when the response arrive, call setTopics and setTitle to upgrade the array 
+of topics and the title
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+this component render a container which have the title of the search and iterate the array of results in topics to view the 
+related topics and stargazer of that topic have a button to view related topics of that topic.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+in app.js only create a call to the component Topics.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### How to run app & test
 
-## Learn More
+*First you need to clone
+git clone https://github.com/uplinkmx/github-topic-explorer.git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+*Get in into directory 
+cd github-topic-explorer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+*Install dependencies
+npm install
 
-### Code Splitting
+*create empty .env file whit this constants and add your [Github API key](https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql) 
+REACT_APP_GITHUB_API_TOKEN= 'your_api_key'
+REACT_APP_TOPIC='react'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+*Start project
+npm start
 
-### Analyzing the Bundle Size
+*if you need change the first topic to search you need to modify REACT_APP_TOPIC in your .env file please remember if you change 
+some information of your .env file please restart the project to load this changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Future Improvements
 
-### Making a Progressive Web App
+Feel free to elaborate on how you would improve any of the following topics 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Code Structuring:
+if we wanted more options maybe we need a create a services to make all the calls and using axios 
 
-### Advanced Configuration
+* Refactoring:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Additional Features:
+put loading element which show after click the button and wait for the reponse to hide
